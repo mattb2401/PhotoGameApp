@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textSize="24sp"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:id="@+id/username"
+        android:textColorHint="#c8cace"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:hint="password"
+        android:textColorHint="#c8cace"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="43dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="SIGN UP"
+        android:textColor="#FFF"
+        android:id="@+id/signup_btn"
+        android:layout_marginTop="10dp"/>
+
+
+</LinearLayout>
