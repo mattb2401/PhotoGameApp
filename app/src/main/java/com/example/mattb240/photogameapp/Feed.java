@@ -69,6 +69,12 @@ public class Feed extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        fetchFeed();
+    }
+
     public void fetchFeed(){
         dialog.setMessage("Fetching feed");
         dialog.show();

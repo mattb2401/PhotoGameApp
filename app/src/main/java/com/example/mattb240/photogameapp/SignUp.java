@@ -33,6 +33,8 @@ public class SignUp extends AppCompatActivity {
 
     EditText username;
     EditText password;
+    EditText fname;
+    EditText lname;
     Button signUpBtn;
     String tag_json_obj = "sign_in_request";
     private ProgressDialog dialog;
@@ -44,12 +46,14 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sigin);
+        setContentView(R.layout.signup);
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
+        fname = (EditText)findViewById(R.id.fname);
+        lname = (EditText)findViewById(R.id.lname);
         dialog = new ProgressDialog(this);
         signUpBtn = (Button)findViewById(R.id.signup_btn);
-        sharedPrefs = SignUp.this.getPreferences(Context.MODE_PRIVATE);
+        sharedPrefs = getSharedPreferences("photoGameApp", MODE_PRIVATE);
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +63,8 @@ public class SignUp extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("username", username.getText().toString());
                 params.put("password", password.getText().toString());
+                params.put("fname", fname.getText().toString());
+                params.put("lname", lname.getText().toString());
                 JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
                         base_url, new JSONObject(params),
                         new Response.Listener<JSONObject>() {

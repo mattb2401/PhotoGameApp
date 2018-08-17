@@ -15,6 +15,24 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="first name"
+        android:id="@+id/fname"
+        android:textColorHint="#c8cace"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lname"
+        android:inputType="text"
+        android:hint="last name"
+        android:textColorHint="#c8cace"
+        android:layout_marginTop="10dp" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="username"
         android:id="@+id/username"
         android:textColorHint="#c8cace"

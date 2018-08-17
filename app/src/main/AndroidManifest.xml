@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".UploadImage">
         </activity>
+        <activity android:name=".ViewImage">
+        </activity>
     </application>
 
 </manifest>

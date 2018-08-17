@@ -61,31 +61,39 @@ public class FeedAdapter extends ArrayAdapter<JSONObject> {
         TextView views = (TextView)itemView.findViewById(R.id.no_of_views);
         TextView no_of_likes = (TextView)itemView.findViewById(R.id.no_of_likes);
         TextView no_of_dislikes = (TextView)itemView.findViewById(R.id.no_of_dislikes);
+        TextView fname = (TextView)itemView.findViewById(R.id.fname);
+        TextView lname = (TextView)itemView.findViewById(R.id.lname);
+
         try {
             caption.setText(list.get(position).getString("caption"));
             category.setText(list.get(position).getString("category"));
-            String photoViews;
-            if(list.get(position).getString("views") != "null"){
-                 photoViews = list.get(position).getString("views");
-            }else{
-                 photoViews = "0";
-            }
+            fname.setText(list.get(position).getString("fname").toUpperCase());
+            lname.setText(list.get(position).getString("lname").toUpperCase());
             final int photoId = list.get(position).getInt("photoId");
             final int userId = list.get(position).getInt("userId");
-            views.setText(photoViews);
+            views.setText(list.get(position).getString("views"));
             final JSONObject userActivity = list.get(position).getJSONObject("user_photo_activity");
 
             final JSONObject act = list.get(position).getJSONObject("activity");
             no_of_likes.setText(String.valueOf(act.getInt("up_votes")));
             no_of_dislikes.setText(String.valueOf(act.getInt("down_votes")));
-
             if(userActivity.getInt("upVote") > 0){
                 likeBtn.setImageResource(R.mipmap.like_active);
             }else if(userActivity.getInt("downVote") > 0) {
                 dislikeBtn.setImageResource(R.mipmap.dislike_active);
             }
             Glide.with(context).load(context.getString(R.string.baseUrl)+"/uploads/"+list.get(position).getString("photo")).into(photo);
-
+            final String ph = list.get(position).getString("photo");
+            photo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent viewImage = new Intent(context, ViewImage.class);
+                    viewImage.putExtra("photo", ph);
+                    viewImage.putExtra("photoId", String.valueOf(photoId));
+                    viewImage.putExtra("userId", String.valueOf(userId));
+                    context.startActivity(viewImage);
+                }
+            });
             likeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
